@@ -15,7 +15,9 @@ public class Main {
 
             String nome = JOptionPane.showInputDialog("Digite o nome do aluno ou 'sair' para encerrar:");
 
+
             if (nome.equals("sair")) {
+
                 continuar = false;
             } else {
                 cadastrarAluno(nome);
@@ -23,7 +25,7 @@ public class Main {
         }
 
         System.out.println("Alunos cadastrados:");
-        for (String aluno : alunos) {
+        for (String aluno : alunos ) {
             System.out.println(aluno);
         }
 
@@ -31,7 +33,14 @@ public class Main {
     }
 
     public static void cadastrarAluno(String nome) {
-        alunos.add(nome);
-        System.out.println("Aluno " + nome + " cadastrado com sucesso!");
+        if (nome.matches("^[A-Za-z]+$")) {
+            alunos.add(nome);
+            System.out.println("Aluno " + nome + " cadastrado com sucesso!");
+        }
+
+        else{
+                JOptionPane.showMessageDialog(null, "invalido");
+            }
+
     }
 }
