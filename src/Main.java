@@ -1,8 +1,6 @@
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Main {
 
@@ -95,24 +93,30 @@ public class Main {
                     for (int i = 0; i <cadastro.size(); i++){
                         Escola uTemp = cadastro.get(i);
 
-                    if (uTemp.usuario.equalsIgnoreCase(nome)){
-                        System.out.println("\tUsuario encontrado!");
-                        System.out.println("\tNome : " + uTemp.usuario);
-                        System.out.println("\tEmail: " + uTemp.email);
-                        System.out.println("\tId: " + uTemp.id);
-                        break;
-                    }else {
+                        if (uTemp.usuario.equalsIgnoreCase(nome)){
+                            System.out.println("\tUsuario encontrado!");
+                            System.out.println("\tNome : " + uTemp.usuario);
+                            System.out.println("\tEmail: " + uTemp.email);
+                            System.out.println("\tId: " + uTemp.id);
+                                break;
+                        }else {
                         System.out.println("Usuário não encontrado!");
                         System.out.println("Tente novamente.");
-                }
-
+                        }
                     }
+                    break;
+                 }
+                case "4":{
 
+                    for (int i = 0; i < cadastro.size(); i++){
+                        Escola conta = cadastro.get(i);
+                        System.out.println("["+ i +"]" + conta.getUsuario());
+                    }
+                    int referencia = Integer.parseInt(JOptionPane.showInputDialog("Você deseja excluir qual usuário: "));
+                    cadastro.remove(referencia);
 
+                }
             }
-
-
-        }
 
 
     }
