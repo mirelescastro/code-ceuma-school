@@ -1,4 +1,5 @@
-import javax.swing.*;
+
+import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -83,11 +84,29 @@ public class Main {
                     u.email = email;
                     u.id = id;
 
-                    System.out.println("O usuário é:" + u.usuario);
+                    System.out.println("Usuário " + u.usuario + " cadastrado!");
 
                     cadastro.add(u);
                     break;
                 }
+                case "2": {
+                    String nome = JOptionPane.showInputDialog("Digite o nome do aluno: ");
+
+                    for (int i = 0; i <cadastro.size(); i++){
+                        Escola uTemp = cadastro.get(i);
+
+                    if (uTemp.usuario.equalsIgnoreCase(nome)){
+                        System.out.println("\tUsuario encontrado!");
+                        System.out.println("\tNome : " + uTemp.usuario);
+                        System.out.println("\tEmail: " + uTemp.email);
+                        System.out.println("\tId: " + uTemp.id);
+                        break;
+                    }else {
+                        System.out.println("Usuário não encontrado!");
+                        System.out.println("Tente novamente.");
+                }
+
+                    }
 
 
             }
@@ -97,4 +116,5 @@ public class Main {
 
 
     }
+}
 }
