@@ -26,4 +26,5 @@ public class Escola {
     public void setId(String id) {
         this.id = Integer.parseInt(id);
     }
+
 }
