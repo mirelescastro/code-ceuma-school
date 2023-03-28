@@ -80,14 +80,14 @@ public class Main {
                     Escola u = new Escola();
                     u.usuario = usuario;
                     u.email = email;
-                    u.id = id;
+                    u.id = Integer.parseInt(id);
 
                     System.out.println("Usuário " + u.usuario + " cadastrado!");
 
                     cadastro.add(u);
                     break;
                 }
-                case "2": {
+                case "2": { // Procurar usuário
                     String nome = JOptionPane.showInputDialog("Digite o nome do aluno: ");
 
                     boolean usuarioEncontrado = false;
@@ -97,11 +97,11 @@ public class Main {
                         Escola conta = cadastro.get(i);
 
                         if (nome.equals(conta.getUsuario())){
-                        System.out.println("\tUsuario encontrado!");
-                        System.out.println("\tNome : " + conta.getUsuario());
-                        System.out.println("\tEmail: " + conta.getEmail());
-                        System.out.println("\tId: " + conta.getId());
-                        usuarioEncontrado = true;
+                            System.out.println("\tUsuario encontrado!");
+                            System.out.println("\tNome : " + conta.getUsuario());
+                            System.out.println("\tEmail: " + conta.getEmail());
+                            System.out.println("\tId: " + conta.getId());
+                            usuarioEncontrado = true;
                             break;
                         }
                     }
@@ -110,12 +110,51 @@ public class Main {
                         System.out.println("Tente novamente.");
                     }
                     break;
+                }
+                case "3": { // Alterar o usuário
+
+                    for (int i = 0; i < cadastro.size(); i++) {
+
+                        Escola conta = cadastro.get(i);
+
+                        System.out.print("[" + i + "]" + conta.getUsuario());
+                    }
+
+                    int referencia = Integer.parseInt(JOptionPane.showInputDialog("Qual usuário você deseja alterar? "));
+
+                    System.out.print("\nDigite um novo usuario: ");
+                    String novoUsuario = JOptionPane.showInputDialog(referencia);
+
+                    System.out.print("\nDigite um novo email: ");
+                    String novoEmail = JOptionPane.showInputDialog(referencia);
+
+
+                    System.out.print("\nDigite um novo id: ");
+                    String novoId = JOptionPane.showInputDialog(referencia);
+
+                    Escola u = cadastro.get(referencia);
+
+                    u.setUsuario(novoUsuario);
+                    u.setEmail(novoEmail);
+                    u.setId(novoId);
+                }
+                break;
+
+                case "4": { //Excluir
+                    System.out.println("\nUsuários restantes:");
+                    for (int i = 0; i < cadastro.size(); i++){
+                        Escola conta = cadastro.get(i);
+                        System.out.println("["+ i +"]" + conta.getUsuario());
+                    }
+                    int referencia = Integer.parseInt(JOptionPane.showInputDialog("Você deseja remover qual usuário: "));
+                    cadastro.remove(referencia);
+                    JOptionPane.showMessageDialog(null, "Você removeu esse usuário.");
+
+                }
+
             }
 
 
         }
-
-
     }
-}
 }
