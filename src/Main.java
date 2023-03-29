@@ -32,7 +32,7 @@ public class Main {
                     while (usuarioValido) {
                         usuario = JOptionPane.showInputDialog(null, "Digite seu usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]+$")) {
-                            showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.");
+                            showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
                             break;
@@ -45,7 +45,7 @@ public class Main {
                         email = JOptionPane.showInputDialog(null, "Digite seu email:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
 
                         if (!patternEmail.matcher(email).matches()) {
-                            showMessageDialog(null, "Email inválido.");
+                            showMessageDialog(null, "Email inválido.","", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
                             break;
@@ -53,7 +53,18 @@ public class Main {
 
                     }
 
-                    String senha = JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                    boolean senhaValida = true;
+                    String senha = null;
+
+                    while (senhaValida) {
+                        senha = JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                        if (!senha.matches("^.{8,15}$")) {
+                            showMessageDialog(null, "A senha deve conter no mínimo 8 caracteres.", "", JOptionPane.ERROR_MESSAGE);
+                            continue;
+                        }else {
+                            break;
+                        }
+                    }
 
                     Escola dados = new Escola();
                     dados.usuario = usuario;
