@@ -29,7 +29,7 @@ public class Main {
                     String email = JOptionPane.showInputDialog(null, "Digite seu email:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                     if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                         JOptionPane.showMessageDialog(null, "Email inválido");
-                        String validemail = JOptionPane.showInputDialog("Digite seu email:");
+                        String validemail = JOptionPane.showInputDialog(null, "Digite seu email:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                     }
 
                     String id = JOptionPane.showInputDialog(null, "Digite seu id:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
