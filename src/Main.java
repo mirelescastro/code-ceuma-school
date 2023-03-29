@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class Main {
 
 
 
     public static void main(String[] args) {
         ArrayList<Escola> cadastro = new ArrayList<>();
+
+
+
+        Pattern patternEmail = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
 
 
         boolean continuar = true;
@@ -20,24 +26,39 @@ public class Main {
 
             switch (opcao) {
                 case "1": {
+                    boolean usuarioValido = true;
+                    String usuario = null;
 
-                    String usuario = JOptionPane.showInputDialog(null, "Digite seu usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
-                    if (!usuario.matches("^[A-Za-z]+$")) {
-                        JOptionPane.showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.");
-                        JOptionPane.showInputDialog("Digite seu usuário:");
-                    }
-                    String email = JOptionPane.showInputDialog(null, "Digite seu email:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
-                    if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-                        JOptionPane.showMessageDialog(null, "Email inválido");
-                        String validemail = JOptionPane.showInputDialog(null, "Digite seu email:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                    while (usuarioValido) {
+                        usuario = JOptionPane.showInputDialog(null, "Digite seu usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                        if (!usuario.matches("^[A-Za-z]+$")) {
+                            showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.");
+                            continue;
+                        }else {
+                            break;
+                        }
                     }
 
-                    String id = JOptionPane.showInputDialog(null, "Digite seu id:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                    boolean emailValido = true;
+                    String email = null;
+                    while (emailValido) {
+                        email = JOptionPane.showInputDialog(null, "Digite seu email:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+
+                        if (!patternEmail.matcher(email).matches()) {
+                            showMessageDialog(null, "Email inválido.");
+                            continue;
+                        }else {
+                            break;
+                        }
+
+                    }
+
+                    String senha = JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
 
                     Escola dados = new Escola();
                     dados.usuario = usuario;
                     dados.email = email;
-                    dados.id = Integer.parseInt(String.valueOf(id));
+                    dados.senha = senha;
 
                     System.out.println("Usuário " + dados.usuario + " cadastrado!");
 
@@ -56,7 +77,7 @@ public class Main {
                             System.out.println("\nUsuario encontrado!");
                             System.out.println("\tNome : " + conta.getUsuario());
                             System.out.println("\tEmail: " + conta.getEmail());
-                            System.out.println("\tId: " + conta.getId());
+                            System.out.println("\tSenha: " + conta.getSenha());
                             encontrado = true;
                             break;
                             }
@@ -80,13 +101,13 @@ public class Main {
 
                     String novoEmail = JOptionPane.showInputDialog(null, "Digite um novo email:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION + referencia);
 
-                    String novoId = JOptionPane.showInputDialog(null, "Digite um novo id:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION + referencia);
+                    String novaSenha = JOptionPane.showInputDialog(null, "Digite uma nova senha:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION + referencia);
 
                     Escola u = cadastro.get(referencia);
 
                     u.setUsuario(novoUsuario);
                     u.setEmail(novoEmail);
-                    u.setId(novoId);
+                    u.setSenha(novaSenha);
                     break;
 
                 } case "4": { //Excluir
@@ -97,7 +118,7 @@ public class Main {
                      System.out.println("[" + i + "]" + conta.getUsuario());
                      }int referencia = Integer.parseInt(JOptionPane.showInputDialog("Você deseja remover qual usuário: "));
                      cadastro.remove(referencia);
-                     JOptionPane.showMessageDialog(null, "Você removeu esse usuário.");
+                     showMessageDialog(null, "Você removeu esse usuário.");
                      break;
 
                 }

@@ -2,7 +2,7 @@ public class Escola {
 
     public String usuario;
     public String email;
-    public int id;
+    public String senha;
 
     public String getUsuario() {
         return usuario;
@@ -19,12 +19,13 @@ public class Escola {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setId(String id) {
-        this.id = Integer.parseInt(id);
+    public void setSenha(String senha) {
+
+        this.senha = senha;
     }
 
 }
