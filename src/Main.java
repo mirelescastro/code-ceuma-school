@@ -58,12 +58,13 @@ public class Main {
 
                     while (senhaValida) {
                         senha = JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
-                        if (!senha.matches("^.{8,15}$")) {
-                            showMessageDialog(null, "• REQUISITOS DE SENHA:\n"+"\t\tMínimo 8 caracteres.\n" + "\t\tMáximo 15 caracteres.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        if (!senha.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$")) {
+                            showMessageDialog(null, "• REQUISITOS DE SENHA:\n"+"\t\t8 caracteres no mínimo.\n" + "\t\t1 Letra Maiúscula no mínimo\n" + "\t\t1 Número no mínimo\n" + "\t\t1 Símbolo no mínimo: $*&@#", "ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
                             break;
                         }
+
                     }
 
                     Escola dados = new Escola();
@@ -114,7 +115,7 @@ public class Main {
                             "Você deseja alterar:\n " +
                                     "[1] Usuário \n" +
                                     " [2] Email \n " +
-                                    "[3] Senha ", JOptionPane.YES_NO_CANCEL_OPTION);
+                                    "[3] Senha ", "Alterar", JOptionPane.YES_NO_CANCEL_OPTION);
 
                     String novoUsuario = null;
                     String novoEmail = null;
@@ -166,9 +167,9 @@ public class Main {
                             novaSenha = JOptionPane.showInputDialog(null, "" +
                                     "Digite uma nova senha:", "ALTERAR", JOptionPane.YES_NO_CANCEL_OPTION+ referencia);
 
-                            if (!novaSenha.matches("^.{8,15}$")) {
+                            if (!novaSenha.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$")) {
                                 showMessageDialog(null,
-                                        "A senha deve conter no mínimo 8 caracteres.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                        "\"• REQUISITOS DE SENHA:\\n\"+\"\\t\\t8 caracteres no mínimo.\\n\" + \"\\t\\t1 Letra Maiúscula no mínimo\\n\" + \"\\t\\t1 Número no mínimo\\n\" + \"\\t\\t1 Símbolo no mínimo: $*&@#\".", "ERROR", JOptionPane.ERROR_MESSAGE);
                                 continue;
                             }else {
                                 break;
