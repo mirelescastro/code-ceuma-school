@@ -22,7 +22,7 @@ public class Main {
 
         while (continuar) {
             String opcao = JOptionPane.showInputDialog(null, "Escolha o que você deseja fazer:\n \n [1] Cadastrar usuário \n" +
-                    " [2] Buscar usuários \n " + "[3] Alterar o cadastro " + "\n [4] Excluir o cadastro", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                    " [2] Buscar usuários \n " + "[3] Alterar o cadastro " + "\n [4] Excluir o cadastro" + "\n [5] Sair do programa", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
 
             switch (opcao) {
                 case "1": {
@@ -31,7 +31,7 @@ public class Main {
 
                     while (usuarioValido) {
                         usuario = JOptionPane.showInputDialog(null, "Digite seu usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
-                        if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]{2,}+$")) {
+                        if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]{3,}+$")) {
                             showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
@@ -132,6 +132,9 @@ public class Main {
                      showMessageDialog(null, "Você removeu esse usuário.");
                      break;
 
+                } case "5":{
+                    continuar = false;
+                    break;
                 }
             }
         }
