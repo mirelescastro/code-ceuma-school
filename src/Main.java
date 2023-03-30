@@ -30,9 +30,9 @@ public class Main {
                     String usuario = null;
 
                     while (usuarioValido) {
-                        usuario = JOptionPane.showInputDialog(null, "Digite seu usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                        usuario = JOptionPane.showInputDialog(null, "Crie um usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]{3,}+$")) {
-                            showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "", JOptionPane.ERROR_MESSAGE);
+                            showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
                             break;
@@ -45,7 +45,7 @@ public class Main {
                         email = JOptionPane.showInputDialog(null, "Digite seu email:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
 
                         if (!patternEmail.matcher(email).matches()) {
-                            showMessageDialog(null, "Email inválido.","", JOptionPane.ERROR_MESSAGE);
+                            showMessageDialog(null, "Email inválido.","ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
                             break;
@@ -59,7 +59,7 @@ public class Main {
                     while (senhaValida) {
                         senha = JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (!senha.matches("^.{8,15}$")) {
-                            showMessageDialog(null, "A senha deve conter no mínimo 8 caracteres.", "", JOptionPane.ERROR_MESSAGE);
+                            showMessageDialog(null, "• REQUISITOS DE SENHA:\n"+"\t\tMínimo 8 caracteres.\n" + "\t\tMáximo 15 caracteres.", "ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
                             break;
@@ -82,6 +82,7 @@ public class Main {
 
                     for (int i = 0; i < cadastro.size(); i++) {
 
+
                         Escola conta = cadastro.get(i);
 
                         if (nome.equals(conta.getUsuario())) {
@@ -94,11 +95,11 @@ public class Main {
                             }
                         }
                         if (!encontrado) {
-                            System.out.println("Usuário não encontrado!");
+                            System.out.println("\nUsuário não encontrado!");
                             System.out.println("Tente novamente.");
                         }
                     break;
-                } case "3": { // Alterar o usuário
+                }  case "3": { // Alterar o usuário
 
                     for (int i = 0; i < cadastro.size(); i++) {
 
@@ -108,19 +109,78 @@ public class Main {
 
                     int referencia = Integer.parseInt(JOptionPane.showInputDialog(null, "Qual usuário você deseja alterar? ", "Alterar Usuário", JOptionPane.YES_NO_CANCEL_OPTION));
 
-                    String novoUsuario = JOptionPane.showInputDialog(null, "Digite um novo usuário:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION + referencia);
 
-                    String novoEmail = JOptionPane.showInputDialog(null, "Digite um novo email:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION + referencia);
+                    String alteracao = JOptionPane.showInputDialog(null,
+                            "Você deseja alterar:\n " +
+                                    "[1] Usuário \n" +
+                                    " [2] Email \n " +
+                                    "[3] Senha ", JOptionPane.YES_NO_CANCEL_OPTION);
 
-                    String novaSenha = JOptionPane.showInputDialog(null, "Digite uma nova senha:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION + referencia);
+                    String novoUsuario = null;
+                    String novoEmail = null;
+                    String novaSenha = null;
 
-                    Escola u = cadastro.get(referencia);
 
-                    u.setUsuario(novoUsuario);
-                    u.setEmail(novoEmail);
-                    u.setSenha(novaSenha);
+                    if (alteracao.equals("1")) {
+                        boolean usuarioValido = true;
+                        String usuario = null;
+
+                        while (usuarioValido) {
+                            novoUsuario = JOptionPane.showInputDialog(null, "Digite um novo usuário:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION+ referencia);
+                            if (!novoUsuario.matches("^[a-zA-ZÀ-ÿ\\s]{3,}+$")) {
+                                showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                continue;
+                            }else {
+                                break;
+                            }
+
+                        }
+                        Escola conta = cadastro.get(referencia);
+                        conta.setUsuario(novoUsuario);
+                        break;
+
+                    } else if (alteracao.equals("2")) {
+
+                        boolean validacaoEmail = true;
+
+                        while (validacaoEmail) {
+                            novoEmail = JOptionPane.showInputDialog(null, "Digite um novo email:",
+                                    "ALTERAR", JOptionPane.YES_NO_CANCEL_OPTION + referencia);
+
+                            if (!patternEmail.matcher(novoEmail).matches()) {
+                                showMessageDialog(null, "Email inválido.","ERROR", JOptionPane.ERROR_MESSAGE);
+                                continue;
+                            } else {
+                                break;
+                            }
+                        }
+                        Escola conta = cadastro.get(referencia);
+                        conta.setEmail(novoEmail);
+                        break;
+
+                    } else if (alteracao.equals("3")) {
+
+                        boolean validacaoSenha = true;
+
+                        while (validacaoSenha) {
+                            novaSenha = JOptionPane.showInputDialog(null, "" +
+                                    "Digite uma nova senha:", "ALTERAR", JOptionPane.YES_NO_CANCEL_OPTION+ referencia);
+
+                            if (!novaSenha.matches("^.{8,15}$")) {
+                                showMessageDialog(null,
+                                        "A senha deve conter no mínimo 8 caracteres.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                continue;
+                            }else {
+                                break;
+                            }
+
+                        }
+                        Escola conta = cadastro.get(referencia);
+                        conta.setUsuario(novoUsuario);
+                        break;
+                    }
+
                     break;
-
                 } case "4": { //Excluir
                      System.out.println("\nUsuários restantes:");
 
