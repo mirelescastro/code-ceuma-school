@@ -31,7 +31,7 @@ public class Main {
 
                     while (usuarioValido) {
                         usuario = JOptionPane.showInputDialog(null, "Digite seu usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
-                        if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]+$")) {
+                        if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]{2,}+$")) {
                             showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
