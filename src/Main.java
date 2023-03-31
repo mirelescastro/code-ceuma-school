@@ -15,7 +15,7 @@ public class Main {
 
 
 
-        Pattern patternEmail = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+        Pattern patternEmail = Pattern.compile("^[^\\s][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{1,}$");
 
 
         boolean continuar = true;
@@ -31,7 +31,7 @@ public class Main {
 
                     while (usuarioValido) {
                         usuario = JOptionPane.showInputDialog(null, "Digite seu nome:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
-                        if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]{3,}+$")) {
+                        if (!usuario.matches("^[^\\s][a-zA-ZÀ-ÿ\\s]{2,}+$")) {
                             showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
@@ -130,7 +130,7 @@ public class Main {
 
                         while (usuarioValido) {
                             novoUsuario = JOptionPane.showInputDialog(null, "Digite um novo usuário:", "Alterações", JOptionPane.YES_NO_CANCEL_OPTION+ referencia);
-                            if (!novoUsuario.matches("^[a-zA-ZÀ-ÿ\\s]{3,}+$")) {
+                            if (!novoUsuario.matches("^[^\\s][a-zA-ZÀ-ÿ\\s]{2,}+$")) {
                                 showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
                                 continue;
                             }else {
