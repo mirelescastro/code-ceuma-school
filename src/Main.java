@@ -30,7 +30,7 @@ public class Main {
                     String usuario = null;
 
                     while (usuarioValido) {
-                        usuario = JOptionPane.showInputDialog(null, "Crie um usuário:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                        usuario = JOptionPane.showInputDialog(null, "Digite seu nome:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (!usuario.matches("^[a-zA-ZÀ-ÿ\\s]{3,}+$")) {
                             showMessageDialog(null, "O nome deve conter apenas letras. Tente novamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
@@ -57,7 +57,9 @@ public class Main {
                     String senha = null;
 
                     while (senhaValida) {
-                        senha = JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+                        Escola validpass = new Escola();
+                        senha = validpass.getMaskPass();
+                        //JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (!senha.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$")) {
                             showMessageDialog(null, "• REQUISITOS DE SENHA:\n"+"\t\t8 caracteres no mínimo.\n" + "\t\t1 Letra Maiúscula no mínimo\n" + "\t\t1 Número no mínimo\n" + "\t\t1 Símbolo no mínimo: $*&@#", "ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
@@ -164,8 +166,11 @@ public class Main {
                         boolean validacaoSenha = true;
 
                         while (validacaoSenha) {
-                            novaSenha = JOptionPane.showInputDialog(null, "" +
-                                    "Digite uma nova senha:", "ALTERAR", JOptionPane.YES_NO_CANCEL_OPTION+ referencia);
+
+                            Escola validpass = new Escola();
+                            novaSenha = validpass.getMaskPass();
+                            //novaSenha = JOptionPane.showInputDialog(null, "" +
+                                    //"Digite uma nova senha:", "ALTERAR", JOptionPane.YES_NO_CANCEL_OPTION+ referencia);
 
                             if (!novaSenha.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$")) {
                                 showMessageDialog(null,
@@ -177,7 +182,7 @@ public class Main {
 
                         }
                         Escola conta = cadastro.get(referencia);
-                        conta.setUsuario(novoUsuario);
+                        conta.setSenha(novaSenha);
                         break;
                     }
 
