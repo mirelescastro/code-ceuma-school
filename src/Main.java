@@ -2,20 +2,13 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Main {
-
-
-
     public static void main(String[] args) {
         ArrayList<Escola> cadastro = new ArrayList<>();
 
-
-
         Pattern patternEmail = Pattern.compile("^[^\\s][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{1,}$");
-
 
         boolean continuar = true;
 
@@ -49,7 +42,6 @@ public class Main {
                         }else {
                             break;
                         }
-
                     }
 
                     boolean senhaValida = true;
@@ -58,14 +50,12 @@ public class Main {
                     while (senhaValida) {
                         Escola validpass = new Escola();
                         senha = validpass.getMaskPass();
-                        //JOptionPane.showInputDialog(null, "Crie uma senha:", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (!senha.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$")) {
                             showMessageDialog(null, "• REQUISITOS DE SENHA:\n"+"\t\t8 caracteres no mínimo.\n" + "\t\t1 Letra Maiúscula no mínimo.\n" + "\t\t1 Número no mínimo.\n" + "\t\t15 caracteres no máximo.\n" + "\t\t1 Símbolo no mínimo: $*&@#.", "ERROR", JOptionPane.ERROR_MESSAGE);
                             continue;
                         }else {
                             break;
                         }
-
                     }
 
                     Escola dados = new Escola();
@@ -77,17 +67,15 @@ public class Main {
 
                     cadastro.add(dados);
                     break;
-                } case "2": { // Procurar usuário
+                }case "2": { // Procurar usuário
                     String nome = JOptionPane.showInputDialog(null, "Digite o nome do aluno: ", "Procurar Usuário", JOptionPane.YES_NO_CANCEL_OPTION);
 
                     boolean encontrado = false;
 
                     for (int i = 0; i < cadastro.size(); i++) {
 
-
                         Escola conta = cadastro.get(i);
-
-                        if (nome.equals(conta.getUsuario())) {
+                        if (nome.equalsIgnoreCase(conta.getUsuario())) {
                             System.out.println("\nUsuario encontrado!");
                             System.out.println("\tNome : " + conta.getUsuario());
                             System.out.println("\tEmail: " + conta.getEmail());
@@ -101,7 +89,7 @@ public class Main {
                         System.out.println("Tente novamente.");
                     }
                     break;
-                }  case "3": { // Alterar o usuário
+                }case "3": { // Alterar o usuário
 
                     for (int i = 0; i < cadastro.size(); i++) {
 
@@ -127,7 +115,6 @@ public class Main {
                         }
                     }
 
-
                     String alteracao = JOptionPane.showInputDialog(null,
                             "Você deseja alterar:\n " +
                                     "[1] Usuário \n" +
@@ -137,7 +124,6 @@ public class Main {
                     String novoUsuario = null;
                     String novoEmail = null;
                     String novaSenha = null;
-
 
                     if (alteracao.equals("1")) {
                         boolean usuarioValido = true;
@@ -151,7 +137,6 @@ public class Main {
                             }else {
                                 break;
                             }
-
                         }
                         Escola conta = cadastro.get(referencia);
                         conta.setUsuario(novoUsuario);
@@ -183,7 +168,7 @@ public class Main {
                         while (validacaoSenha) {
 
                             Escola validpass = new Escola();
-                            novaSenha = validpass.getMaskPass();
+                            novaSenha = validpass.getMaskPassAlt();
 
                             if (!novaSenha.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$")) {
                                 showMessageDialog(null,
@@ -192,7 +177,6 @@ public class Main {
                             }else {
                                 break;
                             }
-
                         }
                         Escola conta = cadastro.get(referencia);
                         conta.setSenha(novaSenha);
@@ -200,7 +184,7 @@ public class Main {
                     }
 
                     break;
-                } case "4": { //Excluir
+                }case "4": { //Excluir
                     System.out.println("\nUsuários restantes:");
 
                     for (int i = 0; i < cadastro.size(); i++) {
@@ -229,11 +213,13 @@ public class Main {
 
                     break;
 
-                } case "5":{
-                    continuar = false;
+                }case "5":{
+                    showMessageDialog(null,"Você está encerrando o programa.", "Sair",JOptionPane.NO_OPTION);
+                        continuar = false;
+                    }
                     break;
                 }
             }
         }
     }
-}
+

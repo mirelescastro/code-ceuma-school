@@ -7,17 +7,21 @@ public class Escola {
     public String senha;
 
     public String getUsuario() {
+
         return usuario;
     }
 
     public void setUsuario(String usuario) {
+
         this.usuario = usuario;
     }
 
     public String getEmail() {
+
         return email;
     }
     public void setEmail(String email) {
+
         this.email = email;
     }
 
@@ -31,23 +35,34 @@ public class Escola {
 
     public String getMaskPass(){
 
-        JPasswordField jpf = new JPasswordField(24);
+        JPasswordField senhamascarada = new JPasswordField(24);
+        senhamascarada.setEchoChar('*');
         JLabel jl = new JLabel("Crie sua senha: ");
         Box box = Box.createHorizontalBox();
         box.add(jl);
-        box.add(jpf);
+        box.add(senhamascarada);
         int x = JOptionPane.showConfirmDialog(null, box, "Cadastro", JOptionPane.OK_CANCEL_OPTION);
 
         if (x == JOptionPane.OK_OPTION) {
-            return jpf.getText();
+            return senhamascarada.getText();
         }
         return null;
 
     }
+    public String getMaskPassAlt(){
 
+        JPasswordField senhamascarada = new JPasswordField(24);
+        senhamascarada.setEchoChar('*');
+        JLabel jl = new JLabel("Digite a nova senha: ");
+        Box box = Box.createHorizontalBox();
+        box.add(jl);
+        box.add(senhamascarada);
+        int x = JOptionPane.showConfirmDialog(null, box, "Alteração", JOptionPane.OK_CANCEL_OPTION);
 
+        if (x == JOptionPane.OK_OPTION) {
+            return senhamascarada.getText();
+        }
+        return null;
 
-
-
-
+    }
 }
