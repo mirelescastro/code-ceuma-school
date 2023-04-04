@@ -3,7 +3,7 @@ Sistema de cadastros de alunos
 ![design codeceuma school](https://user-images.githubusercontent.com/117586375/229915702-eabee328-fb60-4633-bb04-dcfc14e65416.jpg)
 <p align="center">
 
-# :hammer: Funcionalidades do projeto
+ Funcionalidades do projeto
 
 - `Funcionalidade 1`: Cadastrar aluno.
 - `Funcionalidade 2`: Buscar aluno.
