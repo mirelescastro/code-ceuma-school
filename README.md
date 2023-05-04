@@ -7,11 +7,11 @@
 
  Funcionalidades do projeto
 
-- `Funcionalidade 1`: Cadastrar aluno.
-- `Funcionalidade 2`: Buscar aluno.
-- `Funcionalidade 3`: Alterar aluno.
-- `Funcionalidade 4`: Excluir aluno.
-- `Funcionalidade 5`: Sair do sistema.
+- Cadastrar aluno.
+- Buscar aluno.
+- Alterar aluno.
+- Excluir aluno.
+- Sair do sistema.
 
 Tecnologias utilizadas
 
