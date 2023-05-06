@@ -20,11 +20,9 @@ Tecnologias utilizadas
 
 Contribuidoras 
 
-  <title>Ana Júlia</title>
- <meta http-equiv='refresh' content='10;url=https://github.com/najuliag' />
-
-- Ana Carolina
-- Eduarda Camily
-- Mirele Castro
+- Ana Carolina ➔ https://github.com/anaforttes
+- Ana Júlia ➔ https://github.com/najuliag
+- Eduarda Camily ➔
+- Mirele Castro ➔ https://github.com/scmirele
 
 
