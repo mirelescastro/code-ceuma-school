@@ -13,8 +13,12 @@ public class Main {
         boolean continuar = true;
 
         while (continuar) {
-            String opcao = JOptionPane.showInputDialog(null, "Escolha o que você deseja fazer:\n \n [1] Cadastrar usuário \n" +
-                    " [2] Buscar usuários \n " + "[3] Alterar o cadastro " + "\n [4] Excluir o cadastro" + "\n [5] Sair do programa", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
+            String opcao = JOptionPane.showInputDialog(null, "Escolha o que você deseja fazer:\n \n " +
+                    "[1] Cadastrar usuário \n" +
+                    " [2] Buscar usuários \n " +
+                    "[3] Alterar o cadastro " + "\n " +
+                    "[4] Excluir o cadastro" + "\n " +
+                    "[5] Sair do programa", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
 
             switch (opcao) {
                 case "1": {
@@ -58,10 +62,10 @@ public class Main {
                         }
                     }
 
-                    Escola dados = new Escola();
-                    dados.usuario = usuario;
-                    dados.email = email;
-                    dados.senha = senha;
+//                    Escola dados = new Escola();
+//                    dados.usuario = usuario;
+//                    dados.email = email;
+//                    dados.senha = senha;
 
                     System.out.println("Usuário " + dados.usuario + " cadastrado!");
 

@@ -2,32 +2,48 @@ import javax.swing.*;
 
 public class Escola {
 
-    public String usuario;
-    public String email;
-    public String senha;
+    private String usuario, email, senha;
+
+    public void cadastrar() {
+
+    }
+
+    public void buscar() {
+
+    }
+
+    public void alterar() {
+
+    }
+
+    public void remover() {
+
+    }
+
+    public Escola(String usuario, String email, String senha) {
+        this.usuario = usuario;
+        this.email = email;
+        this.senha = senha;
+    }
 
     public String getUsuario() {
-
         return usuario;
     }
 
     public void setUsuario(String usuario) {
-
         this.usuario = usuario;
     }
 
     public String getEmail() {
-
         return email;
     }
     public void setEmail(String email) {
-
         this.email = email;
     }
 
     public String getSenha() {
         return senha;
-        }
+    }
 
     public void setSenha(String senha) {
         this.senha = senha;
