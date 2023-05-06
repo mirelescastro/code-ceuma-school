@@ -20,9 +20,11 @@ Tecnologias utilizadas
 
 Contribuidoras 
 
+  <title>Ana Júlia</title>
+ <meta http-equiv='refresh' content='10;url=https://github.com/najuliag' />
+
 - Ana Carolina
-- Ana Júlia 
 - Eduarda Camily
 - Mirele Castro
 
-link: https://github.com/scmirele/code-ceuma-school.git
+
